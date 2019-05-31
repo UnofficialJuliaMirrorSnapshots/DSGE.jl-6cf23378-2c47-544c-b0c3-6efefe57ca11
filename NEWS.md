@@ -1,5 +1,20 @@
-# DSGE.jl v0.4.1 Release Notes
+# DSGE.jl v0.5.0 Release Notes
+## Breaking changes
++ Upgraded all code for use with Julia v0.7.0.
++ Changed file-saving dependency from JLD to JLD2.
++ Updated data loading and other machinery to rely on the Missing type for missing data as opposed to NaN.
 
+# DSGE.jl v0.4.2 Release Notes
+## New features and enhancements
+  + Implement benchmarking suite to benchmark code performance.
+  + Make DSGE compatible with improvements to the Kalman filter.
+
+## Bug fixes and cleanup
+  + Clean up unit tests.
+  + Clean up travis file.
+  + Fix dependency issues with NLOpt and Optim.
+
+# DSGE.jl v0.4.1 Release Notes
 ## Bug fixes and cleanup
 - Addressed deprecations and warnings for:
   + Non-vectorized functions (e.g. `log`, `!`)
