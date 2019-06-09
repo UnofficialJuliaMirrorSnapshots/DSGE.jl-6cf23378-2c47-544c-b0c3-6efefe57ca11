@@ -29,7 +29,8 @@ function impulse_responses(m::AbstractModel, system::System{S}) where {S<:Abstra
     impulse_responses(system, horizon)
 end
 
-function impulse_responses(system::System{S}, horizon::Int) where {S<:AbstractFloat}
+function impulse_responses(system::System{S}, horizon::Int;
+                           flip_shocks::Bool = false) where {S<:AbstractFloat}
     # Setup
     nshocks      = size(system[:RRR], 2)
     nstates      = size(system[:TTT], 1)
@@ -62,9 +63,9 @@ function impulse_responses(system::System{S}, horizon::Int) where {S<:AbstractFl
 end
 
 # Method for specifying the subset of shocks, and the size of each shock
-function impulse_responses{S<:AbstractFloat}(m::AbstractModel, system::System{S},
-                                             horizon::Int, shock_names::Vector{Symbol},
-                                             shock_values::Vector{Float64})
+function impulse_responses(m::AbstractModel, system::System{S},
+                           horizon::Int, shock_names::Vector{Symbol},
+                           shock_values::Vector{Float64}) where {S<:AbstractFloat}
 
     # Must provide a name and value for each shock
     @assert length(shock_names) == length(shock_values)
@@ -100,9 +101,9 @@ end
 # Method for picking a specific shock and the size of the desired shift in the state or
 # observed variable using that shock. (Omitting the feature to do pseudo-observables
 # now, for simplicity)
-function impulse_responses{S<:AbstractFloat}(m::AbstractModel, system::System{S},
-                                             horizon::Int, shock_name::Symbol,
-                                             var_name::Symbol, var_value::Float64)
+function impulse_responses(m::AbstractModel, system::System{S},
+                           horizon::Int, shock_name::Symbol,
+                           var_name::Symbol, var_value::Float64) where {S<:AbstractFloat}
 
 
     # Setup
