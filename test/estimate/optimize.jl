@@ -8,8 +8,13 @@ custom_settings = Dict{Symbol, Setting}(
 m = AnSchorfheide(custom_settings = custom_settings, testing = true)
 
 file = "$path/../reference/optimize.h5"
+# For regenerating test file
+#=params_test = h5read(file, "params")
+data_test = h5read(file, "data")=#
+
+file = "$path/../reference/optimize.h5"
 x0 = h5read(file, "params")
-data = Matrix{Float64}(h5read(file, "data")')
+data = h5read(file, "data")'
 minimizer = h5read(file, "minimizer")
 minimum = h5read(file, "minimum")
 H_expected = h5read(file, "H")

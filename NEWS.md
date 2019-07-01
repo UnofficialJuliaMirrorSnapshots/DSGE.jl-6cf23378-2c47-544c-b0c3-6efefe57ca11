@@ -1,3 +1,19 @@
+# DSGE.jl 0.6.0 Release Notes
+
+## New features and enhancements
+   + Forecast decompositions user to compare two forecasts and break down why forecasts have changed (by shock, differences in parameters, differences in data, etc.)
+   + Specify size of desired impulse responses (on impact) and flip shocks
+   + `filter_shocks` method allows user to obtain only filtered-only shocks (as opposed to filtered *and smoothed* shocks)
+   + Compatibility with SMC (full version to be released soon)
+   + New functions to deal with Date objects
+   + Compatibility with likelihood-only Kalman Filter and Chandrsekhar recursions (see StateSpaceRoutines.jl) which offer large speedups
+
+## Bug Fixes and cleanup
+   + Fixes to scenarios code, inluding rectifying date labels
+
+# DSGE.jl v0.5.1 Release Notes
++ Patch release to fix failing test
+
 # DSGE.jl v0.5.0 Release Notes
 ## Breaking changes
 + Upgraded all code for use with Julia v0.7.0.
@@ -92,10 +108,12 @@
 - `detexify` function turns unicode characters into ASCII strings
   before writing them to CSV.
 
+
 ## Breaking changes
 
 - Changed `Dict`s of indices in model object to `OrderedDict`s
 - Upgrade all code for use with Julia v0.5.1 or higher
+
 
 
 # DSGE.jl v0.2.0 Release Notes
@@ -117,6 +135,7 @@
   [means and bands](http://frbny-dsge.github.io/DSGE.jl/latest/means_bands.html)
   for more details.
 
+
 ## Breaking changes
 
 - Added the `Observable` type; replaced the `data_series` and `data_transforms`
@@ -127,6 +146,7 @@
   [StateSpaceRoutines.jl](https://github.com/FRBNY-DSGE/StateSpaceRoutines.jl).
 - `estimate` now saves only parameter draws, not the associated state-space
   matrices or the last filtered states for each draw.
+
 
 
 # DSGE.jl v0.1.5 Release Notes
@@ -140,10 +160,12 @@
   the data used, a table of priors for the model's parameters,
   and more.
 
+
 ## Deprecation Fixes
 
 - Optim.jl's `MultivariateOptimizationResults` type requires `f_increased` field
 - `MersenneTwister` must be constructed with a seed
+
 
 
 # DSGE.jl v0.1.4 Release Notes
@@ -153,9 +175,11 @@
 - Gensys no longer throws an error when system is indeterminate;
   instead, a warning is printed to the screen.
 
+
 ## Bug Fixes
 
 - Fix `OptimizationTrace` constructor according to Optim v0.6. See #6.
+
 
 
 # DSGE.jl v0.1.3 Release Notes
@@ -168,6 +192,7 @@
 - Improved infrastructure for organizing input/output files
 - Bug fix in treatment of zero lower bound in posterior computation
 - Improved test coverage and documentation
+
 
 ## Breaking changes
 
