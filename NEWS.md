@@ -1,11 +1,3 @@
-# DSGE.jl 0.7.1 Release Notes
-## Bug fixes and cleanup
-   + Correct erroneous transposing in SMC
-
-# DSGE.jl 0.7.0 Release Notes
-## New features and enhancements
-   + Sequential Monte Carlo (SMC) as an alternative to Metropolis Hastings for estimating models. Latest release with all bug fixes and speed improvements (it's also now integrated into master as opposed to being on the separate smc branch).
-
 # DSGE.jl 0.6.0 Release Notes
 
 ## New features and enhancements
@@ -206,3 +198,4 @@
 
 - Input data matrices are CSV instead of HDF5
 - Estimation output matrices are *not* flattened when saved
+

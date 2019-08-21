@@ -359,7 +359,7 @@ function read_scenario_output(m::AbstractModel, m904::AbstractModel, agg::Scenar
                 else
                     quotient  = convert(Int, floor(actual_ndraws / desired_ndraws))
                     remainder = actual_ndraws % desired_ndraws
-                    vcat(repeat(1:actual_ndraws, outer = quotient),
+                    vcat(repmat(1:actual_ndraws, quotient),
                          sample(1:actual_ndraws, remainder, replace = false))
                 end
             end
@@ -373,7 +373,7 @@ function read_scenario_output(m::AbstractModel, m904::AbstractModel, agg::Scenar
     end
 
     # Stack draws from all component scenarios
-    fcast_series = cat(agg_draws..., dims = 1)
+    fcast_series = cat(1, agg_draws...)
 
     # If not sampling, update `agg.proportions` and `agg.total_draws`
     if !agg.sample

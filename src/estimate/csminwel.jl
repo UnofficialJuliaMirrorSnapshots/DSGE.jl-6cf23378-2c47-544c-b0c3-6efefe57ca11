@@ -74,7 +74,7 @@ function call
 function csminwel(fcn::Function,
                   grad::Function,
                   x0::Vector,
-                  H0::Matrix=Matrix(1e-5*I, length(x0), length(x0)),
+                  H0::Matrix=1e-5.*eye(length(x0)),
                   args...;
                   xtol::Real           = 1e-32,  # default from Optim.jl
                   ftol::Float64        = 1e-14,  # Default from csminwel

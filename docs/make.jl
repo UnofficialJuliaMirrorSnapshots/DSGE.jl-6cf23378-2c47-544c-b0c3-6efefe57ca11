@@ -1,8 +1,10 @@
-using Documenter, DSGE, Distributions, DataFrames
+using Pkg
+Pkg.add("Documenter")
+using Documenter, DSGE
 
 makedocs(modules = [DSGE],
          clean = false,
-         format = :html,
+         format = Documenter.HTML(),
          sitename = "DSGE.jl",
          authors = "FRBNY-DSGE",
          linkcheck = false,
@@ -31,12 +33,17 @@ makedocs(modules = [DSGE],
          doctest = false # for now
 )
 
-
+# if "deploy" in ARGS
+   include("../../fake_travis.jl")
+# end
 deploydocs(
-     repo = "github.com/FRBNY-DSGE/DSGE.jl.git",
-     target = "build",
-     deps = nothing,
-     julia = "0.6",
-     osname = "osx",
-     make = nothing
+    repo = "github.com/FRBNY-DSGE/DSGE.jl.git",
+    target = "build",
+    deps = nothing,
+    devbranch = "master",
+    branch = "gh-pages",
+    # versions = "v#",
+    # julia = "0.7",
+    # osname = "osx",
+    make = nothing
 )
